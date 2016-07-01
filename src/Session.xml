@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DataSchema name="SprintSessionIVRRawData" type="csvFile"
+	version="1.0.0.0" delimiter="|" importExport="import">
+	<members>
+		<member name="SystemID" type="int" description="SystemID"
+			nullable="false" />
+		<member name="SessionID" type="long"
+			description="SessionID is created by the Product Now!" nullable="false" />
+		<member name="ChannelTypeID" type="int"
+			description="ChannelTypeID for IVR as defined in ENUM, 14" nullable="false" />
+		<member name="SessionGMTStartTime" type="datetime"
+			description="IVR_Call_Date in DateTime format" nullable="false" />
+		<member name="SessionGMTStopTime" type="datetime"
+			description="SessionStartTime+IVR_Elapsed_IVR_Time, computed in Pre-processing"
+			nullable="false" />
+		<member name="SessionDuration" type="duration"
+			description="Same as IVR_Elapsed_IVR_Time" nullable="false" />
+		<member name="IsAnonymous" type="boolean"
+			description="IsAnonymous indicates if this is a real customer or tagged as a unique ANONYMOUS customer.  If a real customer is associated with the record, then IsAnonymous will be FALSE."
+			nullable="false" />
+		<member name="Master_PTN" type="string"
+			description="The primary Customer Subscriber PTN identified on this record.  Uniquely identifies the Customer.  There may be multiple PTNs associated with a BAN."
+			nullable="false" />
+		<member name="Master_BAN" type="string"
+			description="The primary Customer BAN (Account Number) identified on this record.  A BAN may have one or more PTNs associated with it."
+			nullable="true" />
+		<member name="VOICE_SystemID" type="int"
+			description="SystemID of the related VOICE Event" nullable="true" />
+		<member name="VOICE_SessionID" type="long"
+			description="SessionID of the related VOICE Event" nullable="true" />
+		<member name="VOICE_EventID" type="long"
+			description="EventID of the related VOICE Event" nullable="true" />
+		<member name="IVR_RefData_Account_Value" type="string"
+			description="[Display Name: Account Value], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 54 (ACCOUNTVALUE)]"
+			nullable="true" />
+		<member name="IVR_Activation_Date" type="datetime"
+			description="[Display Name: Activation Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 87 (ACTIVATIONDATE)]"
+			nullable="true" />
+		<member name="IVR_Aging_Balance_1" type="decimal"
+			description="[Display Name: Aging Balance 1], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 42 (AGING_BAL_1)]"
+			nullable="true" />
+		<member name="IVR_Aging_Balance_2" type="decimal"
+			description="[Display Name: Aging Balance 2], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 43 (AGING_BAL_2)]"
+			nullable="true" />
+		<member name="IVR_Aging_Balance_3" type="decimal"
+			description="[Display Name: Aging Balance 3], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 44 (AGING_BAL_3)]"
+			nullable="true" />
+		<member name="IVR_Aging_Balance_4" type="decimal"
+			description="[Display Name: Aging Balance 4], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 45 (AGING_BAL_4)]"
+			nullable="true" />
+		<member name="IVR_Amount_Until_Limit" type="decimal"
+			description="[Display Name: Amount Until Limit], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 85 (AMOUNTUNTILLIMIT)]"
+			nullable="true" />
+		<member name="IVR_ASL_Balance" type="decimal"
+			description="[Display Name: ASL Balance], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 84 (ASLBALANCE)]"
+			nullable="true" />
+		<member name="IVR_Call_Date" type="datetime"
+			description="[Display Name: ], [Source Feed: IVR_TRAN(2)_YYYYMMDD.ZIP / IVR_CALL_MENU_DETAIL_YYYYMMDD*.DAT], [Source Field(s): CALLTS]"
+			nullable="true" />
+		<member name="IVR_Collection_End_Date" type="datetime"
+			description="[Display Name: Collection End Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 76 (COLLECTIONENDDATE)]"
+			nullable="true" />
+		<member name="IVR_Collections_Start_Date" type="datetime"
+			description="[Display Name: Collections Start Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): COLLECTIONSTARTDATE]"
+			nullable="true" />
+		<member name="IVR_Commitment_End_Date" type="datetime"
+			description="[Display Name: Commitment End Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): COMMITENDDATE]"
+			nullable="true" />
+		<member name="IVR_Commitment_Start_Date" type="datetime"
+			description="[Display Name: Commitment Start Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): COMMITSTARTDATE]"
+			nullable="true" />
+		<member name="IVR_RefData_Completed_Transactions" type="string"
+			description="[Display Name: Completed Transactions], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): COMPLETEDTRANSACTIONS]"
+			nullable="true" />
+		<member name="IVR_Current_Balance" type="decimal"
+			description="[Display Name: Current Balance], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CURRENT_BAL]"
+			nullable="true" />
+		<member name="IVR_Cycle_Close_Date" type="datetime"
+			description="[Display Name: Cycle Close Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CYCLECLOSEDATE]"
+			nullable="true" />
+		<member name="IVR_Cycle_Start_Date" type="datetime"
+			description="[Display Name: Cycle Start Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CYCLESTARTDATE]"
+			nullable="true" />
+		<member name="IVR_Device_Activation_Date" type="datetime"
+			description="[Display Name: Device Activation Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): DEVICEACTIVATIONDATE]"
+			nullable="true" />
+		<member name="IVR_Dialed_Number_String" type="string"
+			description="[Display Name: Dialed Number String], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): DIALEDNUMBERSTRING]"
+			nullable="true" />
+		<member name="IVR_Elapsed_IVR_Time" type="int"
+			description="[Display Name: Elapsed IVR Time], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ELAPSEDIVRTIME]"
+			nullable="true" />
+		<member name="IVR_Future_Dated_Payment_Date" type="datetime"
+			description="[Display Name: Future Dated Payment Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FDPDATE]"
+			nullable="true" />
+		<member name="IVR_IVR_Active_Subscriber_Count" type="int"
+			description="[Display Name: IVR Active Subscriber Count], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ACTIVESUBSCRIBERCOUNT]"
+			nullable="true" />
+		<member name="IVR_IVR_Last_Activity_Date" type="datetime"
+			description="[Display Name: IVR Last Activity Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LASTACTIVITYDATE]"
+			nullable="true" />
+		<member name="IVR_Last_Bill_Due_Date" type="datetime"
+			description="[Display Name: Last Bill Due Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LASTBILLDUEDATE]"
+			nullable="true" />
+		<member name="IVR_Last_Payment_Date" type="datetime"
+			description="[Display Name: Last Payment Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LASTPAYMENTDATE]"
+			nullable="true" />
+		<member name="IVR_Payment_Amount" type="decimal"
+			description="[Display Name: Payment Amount], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): PAYMENTAMOUNT]"
+			nullable="true" />
+		<member name="IVR_Payment_Arrangement_Posted_Date" type="datetime"
+			description="[Display Name: Payment Arrangement Posted Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): PADATE]"
+			nullable="true" />
+		<member name="IVR_Start_Date" type="datetime"
+			description="[Display Name: Start Date], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): STARTDATE]"
+			nullable="true" />
+		<member name="IVR_Subscriber_Activation_Date" type="datetime"
+			description="[Display Name: Subscriber Activation Date (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ACTIVATIONDATE]"
+			nullable="true" />
+		<member name="IVR_Total_Due" type="decimal"
+			description="[Display Name: Total Due], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): TOTAL_DUE]"
+			nullable="true" />
+		<member name="IVR_Unbilled_Adjustments" type="decimal"
+			description="[Display Name: Unbilled Adjustments], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): UNBILLEDADJUSTMENTS]"
+			nullable="true" />
+		<member name="IVR_Unbilled_Charges" type="decimal"
+			description="[Display Name: Unbilled Charges], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): UNBILLEDCHARGES]"
+			nullable="true" />
+		<member name="IVR_Unbilled_Usage" type="decimal"
+			description="[Display Name: Unbilled Usage], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): UNBILLEDUSAGE]"
+			nullable="true" />
+		<member name="IVR_RefData_Account_Status" type="string"
+			description="[Display Name: Account Status (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 56 (BANSTATUS);], [Maps to RefData... RawRefData: SprintLookupIvrBanstatusRawData, EntityRefDate: SprintRefDataIvrRefdataAccountStatusAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Account_Sub_Type" type="string"
+			description="[Display Name: Account Sub Type (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELDS 26 (ACC_TYPE) AND 27 (SUB_TYPE)], [Maps to RefData... RawRefData: SprintLookupIvrSubTypeRawData, EntityRefDate: SprintRefDataIvrRefdataAccountSubTypeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Account_Type" type="string"
+			description="[Display Name: Account Type (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 26 (ACC_TYPE)], [Maps to RefData... RawRefData: SprintLookupIvrAccTypeRawData, EntityRefDate: SprintRefDataIvrRefdataAccountTypeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Affiliate_Subscriber_CSA_Indicator_TF_Flag"
+			type="string"
+			description="[Display Name: Affiliate Subscriber CSA Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): AFFILIATESUBSCRIBERCSAIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataAffiliateSubscriberCsaIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_ASL_Hotline_YN_Flag" type="string"
+			description="[Display Name: ASL Hotline YN Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP;], [Source Field(s): FIELD 28 (IVR.ASL_FLG); IVR.CALLID;], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataAslHotlineYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_ASL_Last_Activity" type="string"
+			description="[Display Name: ASL Last Activity], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 74 (ASLLASTACTIVITY)], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataAslLastActivityYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_ASL_TF_Flag" type="string"
+			description="[Display Name: ASL Flag (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ASL_FLG], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataAslTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Authentication_TF_Flag" type="string"
+			description="[Display Name: Authentication Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 32 (AUTHENTICATION_FLG)], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataAuthenticationTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_AutoPay_Indicator_YN_Flag" type="string"
+			description="[Display Name: AutoPay Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): AUTOPAYIND], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataAutopayIndicatorYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Ban_Spending_Limit" type="string"
+			description="[Display Name: Ban Spending Limit], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 86 (BANSPENDINGLIMIT)], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataBanSpendingLimitYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Base_Call_Type" type="string"
+			description="[Display Name: Base Call Type], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): BASECALLTYPE], [Maps to RefData... RawRefData: SprintLookupIvrBasecalltypeRawData, EntityRefDate: SprintRefDataIvrRefdataBaseCallTypeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Bill_Cycle" type="string"
+			description="[Display Name: Bill Cycle], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 57 (BILLCYCLE)], [Maps to RefData... RawRefData: SprintLookupIvrBillcycleRawData, EntityRefDate: SprintRefDataIvrRefdataBillCycleAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Bill_Language_Code" type="string"
+			description="[Display Name: Bill Language Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 72 (BILLLANGUAGECODE)], [Maps to RefData... RawRefData: SprintLookupIvrBilllanguagecodeRawData, EntityRefDate: SprintRefDataIvrRefdataBillLanguageCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Billable_Call_YN_Flag" type="string"
+			description="[Display Name: Billable Call Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 13 (BILLABLE_CALL_FLG)], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataBillableCallYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Billing_Past_Due_YN_Flag" type="string"
+			description="[Display Name: Billing Past Due], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 106 (BILLINGPASTDUE)], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataBillingPastDueYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Call_Environment" type="string"
+			description="[Display Name: Call Environment], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CALL_ENV], [Maps to RefData... RawRefData: SprintLookupIvrCallEnvRawData, EntityRefDate: SprintRefDataIvrRefdataCallEnvironmentAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Churn_Risk_Score" type="string"
+			description="[Display Name: Churn Risk Score], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 51 (CUST_CHURN_RISK_SCORE)], [Maps to RefData... RawRefData: SprintLookupIvrCustChurnRiskScoreRawData, EntityRefDate: SprintRefDataIvrRefdataChurnRiskScoreAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Collections_Status_Code" type="string"
+			description="[Display Name: Collections Status Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIELD 78 (COLLECTIONSTATUSCODE)], [Maps to RefData... RawRefData: SprintLookupIvrCollectionstatuscodeRawData, EntityRefDate: SprintRefDataIvrRefdataCollectionsStatusCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Completed_Transaction_YN_Flag" type="string"
+			description="[Display Name: Completed Transaction YN Flag], [Source Feed: *DERIVED*], [Source Field(s): *DERIVED*], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataCompletedTransactionYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Completed_Transfer_to_CSR_YN_Flag"
+			type="string"
+			description="[Display Name: Completed Transfer], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): TNTTOCSR], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataCompletedTransferToCsrYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Consolidated_CDC" type="string"
+			description="[Display Name: Consolidated CDC], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CDC], [Maps to RefData... RawRefData: SprintLookupIvrCdcRawData, EntityRefDate: SprintRefDataIvrRefdataConsolidatedCdcAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Credit_Class" type="string"
+			description="[Display Name: Credit Class], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): CREDITCLASS], [Maps to RefData... RawRefData: SprintLookupIvrCreditclassRawData, EntityRefDate: SprintRefDataIvrRefdataCreditClassAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Debt_Age" type="string"
+			description="[Display Name: Debt Age], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): DEBTAGE], [Maps to RefData... RawRefData: SprintLookupIvrDebtageRawData, EntityRefDate: SprintRefDataIvrRefdataDebtAgeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Device_Activation_Date_Indicator_TF_Flag"
+			type="string"
+			description="[Display Name: Device Activation Date Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): DEVICE_ACTIVATION_DATE_IND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataDeviceActivationDateIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_External_Source_Call_Reason" type="string"
+			description="[Display Name: External Source Call Reason], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): EXTSOURCE_CALLREASON], [Maps to RefData... RawRefData: SprintLookupIvrExtsourceCallreasonRawData, EntityRefDate: SprintRefDataIvrRefdataExternalSourceCallReasonAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_External_Source_Indicator" type="string"
+			description="[Display Name: External Source Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): EXTSOURCE_IND], [Maps to RefData... RawRefData: SprintLookupIvrExtsourceIndRawData, EntityRefDate: SprintRefDataIvrRefdataExternalSourceIndicatorAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Future_Date_Payment_Indicator_TF_Flag"
+			type="string"
+			description="[Display Name: Future Date Payment Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FDPIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataFutureDatePaymentIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Hotline_Flag" type="string"
+			description="[Display Name: Hotline Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): HOTLINE_FLG], [Maps to RefData... RawRefData: SprintLookupIvrHotlineFlgRawData, EntityRefDate: SprintRefDataIvrRefdataHotlineFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Hotline_Indicator_TF_Flag" type="string"
+			description="[Display Name: Hotline Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): HOTLINEIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataHotlineIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Installment_Billing_Indicator_TF_Flag"
+			type="string"
+			description="[Display Name: Installment Billing Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): IBIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataInstallmentBillingIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Is_Delinquent_TF_Flag" type="string"
+			description="[Display Name: Is Delinquent], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ISDELINQUENT], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataIsDelinquentTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Item_Description" type="string"
+			description="[Display Name: Item Description], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): ITEMDESC], [Maps to RefData... RawRefData: SprintLookupIvrItemdescRawData, EntityRefDate: SprintRefDataIvrRefdataItemDescriptionAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_IVR_First_App_ID" type="string"
+			description="[Display Name: IVR First App ID], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): FIRSTAPPID], [Maps to RefData... RawRefData: SprintLookupIvrAppidRawData, EntityRefDate: SprintRefDataIvrRefdataIvrFirstAppIdAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_IVR_Last_App_ID" type="string"
+			description="[Display Name: IVR Last App ID], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LASTAPPID], [Maps to RefData... RawRefData: SprintLookupIvrAppidRawData, EntityRefDate: SprintRefDataIvrRefdataIvrLastAppIdAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_IVR_SOC_Code_Price_Plan" type="string"
+			description="[Display Name: IVR SOC Code Price Plan], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): SOCCODEPP], [Maps to RefData... RawRefData: SprintLookupIvrSoccodeppRawData, EntityRefDate: SprintRefDataIvrRefdataIvrSocCodePricePlanAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Language" type="string"
+			description="[Display Name: Language], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LANGUAGECODE], [Maps to RefData... RawRefData: SprintLookupIvrLanguagecodeRawData, EntityRefDate: SprintRefDataIvrRefdataLanguageAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Last_collection_Activity_Code" type="string"
+			description="[Display Name: Last collection Activity Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): LASTCOLLECTIONACTIVITYCODE], [Maps to RefData... RawRefData: SprintLookupIvrLastcollectionactcodeRawData, EntityRefDate: SprintRefDataIvrRefdataLastCollectionActivityCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Market_ID" type="string"
+			description="[Display Name: Market ID], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): MARKETID], [Maps to RefData... RawRefData: SprintLookupIvrMarketidRawData, EntityRefDate: SprintRefDataIvrRefdataMarketIdAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Network_Flag" type="string"
+			description="[Display Name: Network Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): NETWORK_FLG], [Maps to RefData... RawRefData: SprintLookupIvrNetworkFlgRawData, EntityRefDate: SprintRefDataIvrRefdataNetworkFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Past_Due_Flag" type="string"
+			description="[Display Name: Past Due Flag], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): PAST_DUE_FLG], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataPastDueFlagYnFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Payment_Arrangement_Indicator_TF_Flag"
+			type="string"
+			description="[Display Name: Payment Arrangement Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): PAIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataPaymentArrangementIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_PIN_Indicator_TF_Flag" type="string"
+			description="[Display Name: PIN Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): PININD], [Maps to RefData... RawRefData: SprintLookupIvrPinindTFFlagRawData, EntityRefDate: SprintRefDataIvrRefdataPinIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Price_Plan_Code" type="string"
+			description="[Display Name: Price Plan Code (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP;], [Source Field(s): FIELD 94 (PRICEPLANCODE);], [Maps to RefData... RawRefData: SprintLookupIvrPriceplancodeRawData, EntityRefDate: SprintRefDataIvrRefdataPricePlanCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Shot_Liners_Code" type="string"
+			description="[Display Name: Shot Liners Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): HOTLINEREASONCODE], [Maps to RefData... RawRefData: SprintLookupIvrShotlinersncodeRawData, EntityRefDate: SprintRefDataIvrRefdataShotLinersCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Split_Bill_Code" type="string"
+			description="[Display Name: Split Bill Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): SPLITBILLCODE], [Maps to RefData... RawRefData: SprintLookupIvrSplitbillcodeRawData, EntityRefDate: SprintRefDataIvrRefdataSplitBillCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Status_Change_Reason_Code" type="string"
+			description="[Display Name: Status Change Reason Code], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): STATUSCHANGEREASONCODE], [Maps to RefData... RawRefData: SprintLookupIvrStatuschangereasoncodeRawData, EntityRefDate: SprintRefDataIvrRefdataStatusChangeReasonCodeAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Submarket" type="string"
+			description="[Display Name: Submarket], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): SUBMARKET], [Maps to RefData... RawRefData: SprintLookupIvrSubmarketRawData, EntityRefDate: SprintRefDataIvrRefdataSubmarketAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Subscriber_Tenure" type="string"
+			description="[Display Name: Subscriber Tenure (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP; ], [Source Field(s): CALCULATE BASED ON ACTIVATIONDATE DIFFERENCE FROM CALLDATE.], [Maps to RefData... RawRefData: SprintLookupSubscriberTenureRawData, EntityRefDate: SprintRefDataIvrRefdataSubscriberTenureAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Summary_Bill_Indicator_TF_Flag" type="string"
+			description="[Display Name: Summary Bill Indicator], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): SUMMARYBILLIND], [Maps to RefData... RawRefData: SprintLookupTrueFalseRawData, EntityRefDate: SprintRefDataIvrRefdataSummaryBillIndicatorTFFlagAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Swap_Model_Number" type="string"
+			description="[Display Name: Swap Model Number], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): SWAPMODELNUMBER], [Maps to RefData... RawRefData: SprintLookupIvrSwapmodelnumberRawData, EntityRefDate: SprintRefDataIvrRefdataSwapModelNumberAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Time_To_Contract_Expiration" type="string"
+			description="[Display Name: Time To Contract Expiration (IVR)], [Source Feed: IVR_CALL_YYYYMMDD.ZIP; ], [Source Field(s): FIELD 99 (CONTRACTREMAININGMONTHS); ], [Maps to RefData... RawRefData: SprintLookupTimeToContractExpRawData, EntityRefDate: SprintRefDataIvrRefdataTimeToContractExpirationAssigned]"
+			nullable="true" />
+		<member name="IVR_RefData_Valid_BanPTN" type="string"
+			description="[Display Name: Valid Ban/PTN], [Source Feed: IVR_CALL_YYYYMMDD.ZIP], [Source Field(s): DERIVED, SEE SPRINT IVR CDD'S.], [Maps to RefData... RawRefData: SprintLookupYesNoRawData, EntityRefDate: SprintRefDataIvrRefdataValidBanptnAssigned]"
+			nullable="true" />
+		<member name="IVR_ANI" type="string" description="IVR_ANI"
+			nullable="true" />
+		<member name="IVR_RefData_LASTACCOUNTMENUOPTION" type="string"
+			description="IVR_RefData_LASTACCOUNTMENUOPTION" nullable="true" />
+		<member name="IVR_RefData_LASTSELFSERVICE" type="string"
+			description="IVR_RefData_LASTSELFSERVICE" nullable="true" />
+		<member name="IVR_RefData_CUST_VALUE_SCORE" type="string"
+			description="IVR_RefData_CUST_VALUE_SCORE" nullable="true" />
+		<member name="IVR_Subscriber_ID" type="string" description="IVR_Subscriber_ID"
+			nullable="true" />
+		<member name="LayerID" type="int" description="Layer ID"
+			nullable="false" />
+		<member name="PhysicalID" type="string" description="Physical ID"
+			nullable="true" />
+		<member name="PhysicalCustomerID" type="string" description="Physical customer ID"
+			nullable="true" />
+		<member name="LogicalSessions" type="string" description="Logical Sessions"
+			nullable="true" />
+		<member name="OriginalSessionID_String" type="string"
+			description="Track the original derived SESSION ID" nullable="false" />
+		<member name="SharedAccDim_Both_RefData_Account_Spending_Limit_YN_Flag"
+			type="string"
+			description="[Display Name: Account Spending Limit YN Flag], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ASL_BAN_IND]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Account_Status" type="string"
+			description="[Display Name: Account Status], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): STATUS_REASON_CODE]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Account_Tenure_BIN"
+			type="string"
+			description="[Display Name: Account Tenure BIN], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD ICM_CDMA_TRANYYYYMMDD.ZIP], [Source Field(s): ACCT_ESTABLISHED_DATE, *DERIVED* ; ICM.DATETIME]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Account_Type_Subtype"
+			type="string"
+			description="[Display Name: Account Type Subtype], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ACC_TYPE, ACC_SUB_TYPE, ACC_TYPE_SUB_TYPE_DESC]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Account_Type" type="string"
+			description="[Display Name: Account Type], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ACC_TYPE, ACC_SUB_TYPE, ACC_TYPE_SUB_TYPE_DESC]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Liability_Indicator"
+			type="string"
+			description="[Display Name: Liability Indicator], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ASL_BAN_IND]"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Owner_Brand_Code" type="string"
+			description="[Display Name: Owner Brand Code], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): *FIND FIELD* IN ACCDIM - VALUES OF 'POSTPAID' OR 'PREPAID']"
+			nullable="true" />
+		<member name="SharedAccDim_Both_RefData_Subscribers_Active_BIN"
+			type="string"
+			description="[Display Name: Subscribers Active BIN], [Source Feed: NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ACTIVE_SUBSCRIBER_CNT]"
+			nullable="true" />
+		<member name="SharedAll_Both_Caller_BAN" type="string"
+			description="[Display Name: Caller BAN], [Source Feed: IVR_CALL_YYYYMMDD.ZIP; ICM_CDMA_TRANYYYYMMDD.ZIP; NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ICM.VARIABLE3; IVR.BAN; IVR.CALLID; ICM.VARIABLE1; ACCDIM.BAN]"
+			nullable="true" />
+		<member name="SharedAll_Both_Caller_PTN" type="string"
+			description="[Display Name: Caller PTN], [Source Feed: IVR_CALL_YYYYMMDD.ZIP; ICM_CDMA_TRANYYYYMMDD.ZIP; NDW_ENKATA_ACCDIM-YYYYMMDD], [Source Field(s): ICM.VARIABLE4; IVR.BAN; IVR.CALLID; ICM.VARIABLE1; SUBDIM.PHONE_NUMBER]"
+			nullable="true" />
+		<member name="SharedAll_Both_Datadate" type="datetime"
+			description="[Display Name: Datadate], [Source Feed: ***DERIVED***], [Source Field(s): ***DERIVED***]"
+			nullable="true" />
+		<member name="SharedAll_Both_RefData_Sequencing_Type" type="string"
+			description="[Display Name: Resolution Type], [Source Feed: NDW_ENKATA_MEMO_YYYYMMDD], [Source Field(s): MEMO_MANUAL_TXT]"
+			nullable="true" />
+		<member name="SharedAll_Both_RefData_Self_Service_YN" type="string"
+			description="[Display Name: Self Service YN], [Source Feed: NDW_ENKATA_MEMO_YYYYMMDD], [Source Field(s): MEMO_MANUAL_TXT]"
+			nullable="true" />
+		<member name="SharedAll_Both_Transaction_BAN" type="string"
+			description="[Display Name: Transaction BAN], [Source Feed: HIER_BY_DATE_DIMYYYYMMDD.ZIP; ICARE_TABLE_BUS_ORG_YYYYMMDD*.DAT; ICARE_TABLE_EMPLOYEE_YYYYMMDD*.DAT; ICARE_TABLE_INTRXN_YYYYMMDD*.DAT; ICARE_TABLE_SESSION_YYYYMMDD*.DAT; ICARE_TABLE_SITE_PART_YYYYMMDD*.DAT; ICARE_TABLE_TOPIC_YYYYMMDD*.DAT; ICM_CDMA_TRANYYYYMMDD.ZIP; NDW_ENKATA_MEMO_YYYYMMDD; NDW_ENKATA_SUBDIM-YYYYMMDD], [Source Field(s): EMPLOYEE.EMPLOYEE2USER; EMPLOYEE.LOGONID; HBD.ADVCT_UNIT_ID; HBD.LOGON_ID; HBD.LOGON_ID; ICM.DATETIME; ICM.RECOVERYKEY; ICM.TALKTIME; ICM.VARIABLE1; INTRXN.OBJID; INTRXN.S_X_INTRXN_ID; NDW_MEMO.MEMO_SUBSCRIBER; NDW_MEMO.X_INTRXN_ID; SESSION.END_TIME; SESSION.OBJID; SESSION.SESSION2INTRXN; SESSION.SESSION2USER; SESSION.START_TIME; SESSION.X_CTI_CALL_IDENTIFIER; SITE_PART.OBJID; SITE_PART.X_PTN; SUBDIM.SUBSCRIBER_NO; SUBDIM.PHONE_NUMBER; TOPIC.OBJID; TOPIC.TOPIC2INTRXN; TOPIC.X_TOPIC2SITE_PART]"
+			nullable="true" />
+		<member name="SharedAll_Both_Transaction_PTN" type="string"
+			description="[Display Name: Transaction PTN], [Source Feed: HIER_BY_DATE_DIMYYYYMMDD.ZIP; ICARE_TABLE_BUS_ORG_YYYYMMDD*.DAT; ICARE_TABLE_EMPLOYEE_YYYYMMDD*.DAT; ICARE_TABLE_INTRXN_YYYYMMDD*.DAT; ICARE_TABLE_SESSION_YYYYMMDD*.DAT; ICARE_TABLE_SITE_PART_YYYYMMDD*.DAT; ICARE_TABLE_TOPIC_YYYYMMDD*.DAT; ICM_CDMA_TRANYYYYMMDD.ZIP; NDW_ENKATA_MEMO_YYYYMMDD; NDW_ENKATA_SUBDIM-YYYYMMDD], [Source Field(s): EMPLOYEE.EMPLOYEE2USER; EMPLOYEE.LOGONID; HBD.ADVCT_UNIT_ID; HBD.LOGON_ID; HBD.LOGON_ID; ICM.DATETIME; ICM.RECOVERYKEY; ICM.TALKTIME; ICM.VARIABLE1; INTRXN.OBJID; INTRXN.S_X_INTRXN_ID; NDW_MEMO.MEMO_SUBSCRIBER; NDW_MEMO.X_INTRXN_ID; SESSION.END_TIME; SESSION.OBJID; SESSION.SESSION2INTRXN; SESSION.SESSION2USER; SESSION.START_TIME; SESSION.X_CTI_CALL_IDENTIFIER; SITE_PART.OBJID; SITE_PART.X_PTN; SUBDIM.SUBSCRIBER_NO; SUBDIM.PHONE_NUMBER; TOPIC.OBJID; TOPIC.TOPIC2INTRXN; TOPIC.X_TOPIC2SITE_PART]"
+			nullable="true" />
+		<member name="SharedAll_Both_Verbose_Notes" type="string"
+			description="[Display Name: Agent Notes], [Source Feed: NDW_ENKATA_MEMO_YYYYMMDD], [Source Field(s): MEMO_MANUAL_TXT]"
+			nullable="true" />
+		<member name="SharedSubDim_Both_RefData_Plan_Type" type="string"
+			description="[Display Name: Plan Type], [Source Feed: NDW_ENKATA_SUBDIM-YYYYMMDD], [Source Field(s): PRICE_PLAN]"
+			nullable="true" />
+		<member name="SharedSubDim_Both_RefData_Subscriber_Tenure_BIN"
+			type="string"
+			description="[Display Name: Subscriber Tenure BIN], [Source Feed: NDW_ENKATA_SUBDIM-YYYYMMDD; TRANSACTION_PTNS - NICE DATA SOURCE], [Source Field(s): COMMIT_START_DATE,COMMIT_END_DATE/*DERIVED* SUBDIM.INIT_ACTIVATION_DATE]"
+			nullable="true" />
+		<member name="SharedSubDim_Both_RefData_Time_To_Contract_Expiration_BIN"
+			type="string"
+			description="[Display Name: Time To Contract Expiration BIN], [Source Feed: NDW_ENKATA_SUBDIM-YYYYMMDD; TRANSACTION_PTNS - NICE DATA SOURCE], [Source Field(s): *DERIVED* SUBDIM.COMMIT_END_DATE]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Camera_Capable" type="string"
+			description="[Display Name: Camera Capable], [Source Feed: VLE0_DEV], [Source Field(s): CAMERA_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Customer_Facing_Brand_Name"
+			type="string"
+			description="[Display Name: Device Customer Facing Brand Name], [Source Feed: VLE0_DEV], [Source Field(s): DEV_CUST_BRND_NME]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_End_of_Life" type="string"
+			description="[Display Name: Device End of Life], [Source Feed: VLE0_DEV], [Source Field(s): MKT_ACT_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Equipment_Category"
+			type="string"
+			description="[Display Name: Device Equipment Category], [Source Feed: VLE0_DEV], [Source Field(s): EQPT_CAT_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Form" type="string"
+			description="[Display Name: Device Form], [Source Feed: VLE0_DEV], [Source Field(s): FORM_NME]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Framework" type="string"
+			description="[Display Name: Device Framework], [Source Feed: VLE0_DEV], [Source Field(s): NEED_FRMWRK_TYPE_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Manufacturer"
+			type="string"
+			description="[Display Name: Device Manufacturer], [Source Feed: VLE0_DEV], [Source Field(s): MFR_NME]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Market_Launch_Date"
+			type="string"
+			description="[Display Name: Device Market Launch Date], [Source Feed: VLE0_DEV], [Source Field(s): MKTG_LAUNCH_DT]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Model_Type" type="string"
+			description="[Display Name: Device Model Type], [Source Feed: VLE0_DEV], [Source Field(s): MODE_TYPE_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Operating_System"
+			type="string"
+			description="[Display Name: Device Operating System], [Source Feed: VLE0_DEV], [Source Field(s): OPRTG_SYS_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Quality" type="string"
+			description="[Display Name: Device Quality], [Source Feed: VLE0_DEV], [Source Field(s): QLTY_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Rugged_Type" type="string"
+			description="[Display Name: Device Rugged Type], [Source Feed: VLE0_DEV], [Source Field(s): RUGGED_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Technology_Description"
+			type="string"
+			description="[Display Name: Device Technology Description], [Source Feed: VLE0_DEV], [Source Field(s): TCHNY_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Type_Name" type="string"
+			description="[Display Name: Device Type Name], [Source Feed: VLE0_DEV], [Source Field(s): DEV_TYPE_NME]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Device_Voice_Data" type="string"
+			description="[Display Name: Device Voice Data], [Source Feed: VLE0_DEV], [Source Field(s): VOI_DATA_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_ECSFB_Capability" type="string"
+			description="[Display Name: ECSFB Capability], [Source Feed: VLE0_DEV], [Source Field(s): ECSFB_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_GPS_Capable" type="string"
+			description="[Display Name: GPS Capable], [Source Feed: VLE0_DEV], [Source Field(s): GPS_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_HD_Voice_Capable" type="string"
+			description="[Display Name: HD Voice Capable], [Source Feed: VLE0_DEV], [Source Field(s): HD_VOI_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Hotspot_Capable" type="string"
+			description="[Display Name: Hotspot Capable], [Source Feed: VLE0_DEV], [Source Field(s): HOTSPOT_CPBL_DES]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_NFC_Capable" type="string"
+			description="[Display Name: NFC Capable], [Source Feed: VLE0_DEV], [Source Field(s): NFC_INDCR_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_PTT_Capable" type="string"
+			description="[Display Name: PTT Capable], [Source Feed: VLE0_DEV], [Source Field(s): PTT_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Sprint_TV_Capable" type="string"
+			description="[Display Name: Sprint TV Capable], [Source Feed: VLE0_DEV], [Source Field(s): SPRINT_TV_CPBLE_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Text_Messaging_Capable"
+			type="string"
+			description="[Display Name: Text Messaging Capable], [Source Feed: VLE0_DEV], [Source Field(s): TXT_MSG_CD]"
+			nullable="true" />
+		<member name="SharedTLE0_Both_RefData_Wifi_Capable" type="string"
+			description="[Display Name: Wifi Capable], [Source Feed: VLE0_DEV], [Source Field(s): WIFI_CD]"
+			nullable="true" />
+		<member name="SharedTLE1_Both_NPA_NXX_Number" type="string"
+			description="[Display Name: NPA_NXX Number], [Source Feed: VLE1_BUS_GEO], [Source Field(s): NPA_NXX_NBR]"
+			nullable="true" />
+		<member name="SharedTLE1_Both_RefData_Market_Area_Name" type="string"
+			description="[Display Name: Market Area Name], [Source Feed: VLE1_BUS_GEO], [Source Field(s): AREA_NME]"
+			nullable="true" />
+		<member name="SharedTLE1_Both_RefData_Market_Geography_Area_Code"
+			type="string"
+			description="[Display Name: Market Geography Area Code], [Source Feed: VLE1_BUS_GEO], [Source Field(s): GEO_ID]"
+			nullable="true" />
+		<member name="SharedTLE1_Both_RefData_Market_Name" type="string"
+			description="[Display Name: Market Name], [Source Feed: VLE1_BUS_GEO], [Source Field(s): MKT_NME]"
+			nullable="true" />
+		<member name="SharedTLE1_Both_RefData_Market_Region" type="string"
+			description="[Display Name: Market Region], [Source Feed: VLE1_BUS_GEO], [Source Field(s): RGN_NME]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_Airave_Quality_of_Service_PCT_BIN"
+			type="string"
+			description="[Display Name: Airave Quality of Service %], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_HOME_MKT_CD]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_QOS_Market_Name" type="string"
+			description="[Display Name: QOS Market Name], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_MKT_NME]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_QOS_Year_Month_Number"
+			type="string"
+			description="[Display Name: QOS Year Month Number], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_YR_MO_NBR]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_Roaming_Quality_of_Service_PCT_BIN"
+			type="string"
+			description="[Display Name: Roaming Quality of Service %], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_ROAM_QOS_PCT_QTY]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_Total_Quality_of_Service_PCT_BIN"
+			type="string"
+			description="[Display Name: Total Quality of Service %], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_TOT_QOS_PCT_QTY]"
+			nullable="true" />
+		<member name="SharedTMUB_Both_RefData_Underperforming_Device_Flag"
+			type="string"
+			description="[Display Name: Underperforming Device Flag], [Source Feed: TMUB_NW_QOS_SCORE], [Source Field(s): TMUB_UNDER_PRFM_DEV_CD]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_3G_Data_Attempts_kb_of_Use" type="decimal"
+			description="[Display Name: 3G Data Attempts kb of Use ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): DATA_3G_ATTM_KOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_Enhanced_3G_Attempts_kb_of_Use"
+			type="decimal"
+			description="[Display Name: Enhanced 3G Attempts kb of Use], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_E3G_DATA_ATTM_KOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_LTE_Attempts_kb_of_Use" type="decimal"
+			description="[Display Name: LTE Attempts kb of Use], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_LTE_DATA_ATTM_KOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_3G_Data_Session_Count_BIN"
+			type="string"
+			description="[Display Name: 3G Data Session Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): DATA_3G_SESSN_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Airave_Candidate_Status"
+			type="string"
+			description="[Display Name: Airave Candidate Status], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_AIRAVE_CANDT_STUS_CD]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Attempted_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Attempted Call Count ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_ATTM_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Attempted_Calls_MOU_BIN"
+			type="string"
+			description="[Display Name: Attempted Calls MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_ATTM_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Block_Call_Percentage_BIN"
+			type="string"
+			description="[Display Name: Block Call Percentage], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_BLK_CALL_PCT_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Blocked_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Blocked Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_BLK_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Blocked_Calls_MOU_BIN"
+			type="string"
+			description="[Display Name: Blocked Calls MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): BLK_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_CDR_Care_Option_2_Call_Count_BIN"
+			type="string"
+			description="[Display Name: CDR Care Option 2 Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_CARE_OPT_2_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_CDR_Care_Option_4_Call_Count_BIN"
+			type="string"
+			description="[Display Name: CDR Care Option 4 Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): CARE_OPT_4_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_CDR_Report_Year_Month_Number"
+			type="string"
+			description="[Display Name: CDR Report Year Month Number], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_RPT_YR_MO_NBR]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Drop_Call_Percentage_BIN"
+			type="string"
+			description="[Display Name: Drop Call Percentage], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_DROP_CALL_PCT_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Dropped_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Dropped Call Count ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_DROP_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Dropped_Calls_MOU_BIN"
+			type="string"
+			description="[Display Name: Dropped Calls MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_DROP_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Enhanced_3G_Session_Count_BIN"
+			type="string"
+			description="[Display Name: Enhanced 3G Session Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_E3G_DATA_SESSN_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Fail_Call_Percentage_BIN"
+			type="string"
+			description="[Display Name: Fail Call Percentage], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_FAIL_CALL_PCT_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Forward_Call_MOU_BIN"
+			type="string"
+			description="[Display Name: Forward Call MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): FRWD_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Forwarded_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Forwarded Call Count ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): FRWD_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Inbound_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Inbound Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_INBD_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Incound_MOU_BIN" type="string"
+			description="[Display Name: Incound MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_INBD_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_LTE_Session_Count_BIN"
+			type="string"
+			description="[Display Name: LTE Session Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_LTE_DATA_SESSN_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_M2M_Call_Count_BIN" type="string"
+			description="[Display Name: M2M Call Count ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): M2M_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_M2M_MOU_BIN" type="string"
+			description="[Display Name: M2M MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): M2M_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Offpeak_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Offpeak Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_OFFPEAK_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Outbound_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Outbound Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_OUTBD_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Outbound_MOU_BIN" type="string"
+			description="[Display Name: Outbound MOU ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_OUTBD_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Peak_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Peak Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_PEAK_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Qchat_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Qchat Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): QCHAT_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Qchat_MOU_BIN" type="string"
+			description="[Display Name: Qchat MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): QCHAT_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Roaming_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Roaming Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_ROAM_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Roaming_Calls_MOU_BIN"
+			type="string"
+			description="[Display Name: Roaming Calls MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_ROAM_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Successful_Call_Count_BIN"
+			type="string"
+			description="[Display Name: Successful Call Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_SUCSS_CALL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Successful_Call_MOU_BIN"
+			type="string"
+			description="[Display Name: Successful Call MOU], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_SUCSS_MOU_QTY]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Text_Message_Count_BIN"
+			type="string"
+			description="[Display Name: Text Message Count], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_TXT_MSG_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Text_Message_Failed_Count_BIN"
+			type="string"
+			description="[Display Name: Text Message Failed Count ], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_TXT_MSG_FAIL_CNT]"
+			nullable="true" />
+		<member name="SharedTQ22_Both_RefData_Total_Blocks_And_Drops_BIN"
+			type="string"
+			description="[Display Name: Total Blocks and Drops], [Source Feed: TQ22_CDR_VOI_SBSCR_AGRGT], [Source Field(s): TQ22_FAIL_CALL_CNT]"
+			nullable="true" />
+		<member name="VOICE_RefData_Hour_of_Day_CST" type="string"
+			description="Capture the HOUR OF THE DAY" nullable="true" />
+		<member name="IsAnonymousBAN" type="boolean"
+			description="IsAnonymousBAN indicates if this is a real customer ACCOUNT or tagged as a unique ANONYMOUS customer Account.  If a real customer is associated with the record, then IsAnonymousBAN will be FALSE."
+			nullable="false" />
+		<member name="NumOfActiveSubscribers" type="int"
+			description="For support of CEA logic rules determining LARGE versus SMALL Customers. DO NOT Export to Vertica."
+			nullable="false" />
+		<member name="IVR_Call_Identifier" type="string"
+			description="[Display Name: ], [Source Feed: IVR_CALL.ZIP], [Source Field(s): CALL_ID]"
+			nullable="true" />
+		<member name="IVR_RefData_Hour_of_Day_CST" type="string"
+			description="Capture the HOUR OF THE DAY" nullable="true" />
+	</members>
+</DataSchema>
