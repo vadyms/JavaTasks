@@ -26,7 +26,6 @@ public class program {
 	private static String columnField = "name";
 	private static String dataFile = "C:\\workspace\\RawDataFilter\\src\\text.txt";
 	
-	
 	private static ArrayList<String[]> readLines(String file, String delimiter) {
 		
 		ArrayList<String[]> resultArrayList = new ArrayList<String[]>();
